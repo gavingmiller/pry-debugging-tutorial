@@ -18,7 +18,7 @@ class ActorsController < ApplicationController
   end
 
   def create
-    @actor = Actor.new(params[:actor])
+    @actor = Actor.new(actor_params)
 
     if @actor.save
       redirect_to @actor, notice: 'Actor was successfully created.'
@@ -30,7 +30,7 @@ class ActorsController < ApplicationController
   def update
     @actor = Actor.find(params[:id])
 
-    if @actor.update_attributes(params[:actor])
+    if @actor.update_attributes(actor_params)
       redirect_to @actor, notice: 'Actor was successfully updated.'
     else
       render action: "edit"
@@ -42,5 +42,11 @@ class ActorsController < ApplicationController
     @actor.destroy
 
     redirect_to actors_path, notice: 'Actor was successfully deleted.'
+  end
+
+  private
+
+  def actor_params
+    params[:actor].slice(:name)
   end
 end
