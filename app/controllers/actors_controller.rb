@@ -2,7 +2,7 @@ class ActorsController < ApplicationController
   respond_to :html
 
   def index
-    @actors = Actor.all
+    @actors = Actor.order(:name).all
   end
 
   def show
