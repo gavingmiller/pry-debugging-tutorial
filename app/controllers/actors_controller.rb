@@ -1,4 +1,6 @@
 class ActorsController < ApplicationController
+  load_and_authorize_resource
+
   respond_to :html
 
   def index
@@ -6,7 +8,6 @@ class ActorsController < ApplicationController
   end
 
   def show
-    @actor = Actor.find(params[:id])
   end
 
   def new
@@ -14,7 +15,6 @@ class ActorsController < ApplicationController
   end
 
   def edit
-    @actor = Actor.find(params[:id])
   end
 
   def create
@@ -40,5 +40,7 @@ class ActorsController < ApplicationController
   def destroy
     @actor = Actor.find(params[:id])
     @actor.destroy
+
+    redirect_to actors_path, notice: 'Actor was successfully deleted.'
   end
 end
