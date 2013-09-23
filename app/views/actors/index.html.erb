@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>Name</th>
     <th></th>
     <th></th>
     <th></th>
@@ -9,6 +10,7 @@
 
 <% @actors.each do |actor| %>
   <tr>
+    <td><%= actor.name %></td>
     <td><%= link_to 'Show', actor %></td>
     <td><%= link_to 'Edit', edit_actor_path(actor) %></td>
     <td><%= link_to 'Destroy', actor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
